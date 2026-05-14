@@ -1,66 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>画作导览</title>
+    <title>济南风景</title>
     <style>
         body {
-            font-family: system-ui, sans-serif;
-            background: #f5f0eb;
+            font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            padding: 20px;
         }
+
         .player-card {
             background: white;
-            border-radius: 32px;
-            padding: 40px 30px;
-            max-width: 400px;
-            width: 100%;
+            width: 380px; /* 稍微加宽一点，适应图片 */
+            border-radius: 20px;
+            padding: 30px;
             text-align: center;
-            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
         }
+
+        .player-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* --- 图片样式修改重点在这里 --- */
         .art-icon {
-            font-size: 64px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
-        h2 {
-            color: #2c1810;
-            margin-bottom: 8px;
+
+        .art-icon img {
+            width: 280px;       /* 图片宽度：调大，让字看清楚 */
+            height: 200px;      /* 图片高度：固定高度 */
+            border-radius: 15px;/* 圆角矩形：比圆形更能保留画面内容 */
+            object-fit: cover;  /* 保持比例填充 */
+            border: 1px solid #eee;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        .artist {
-            color: #8b7355;
-            margin-bottom: 30px;
-            font-size: 16px;
+        /* -------------------------------- */
+
+        h1 {
+            color: #333;
+            margin: 0 0 10px 0;
+            font-size: 24px;
+            font-weight: 700;
         }
+
+        p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        /* 音频播放器美化 */
         audio {
             width: 100%;
-            margin: 20px 0;
-            border-radius: 40px;
+            outline: none;
         }
-        .instruction {
-            color: #aaa;
-            font-size: 13px;
-            margin-top: 25px;
+        
+        /* 兼容Webkit内核浏览器的播放器样式 */
+        audio::-webkit-media-controls-panel {
+            background-color: #f9f9f9;
         }
     </style>
 </head>
 <body>
+
     <div class="player-card">
+        <!-- 图片区域：使用了圆角矩形设计 -->
         <div class="art-icon">
-            <img src="beijing.jpg" alt="风景">
+            <img src="beijing.jpg" alt="画作展示">
         </div>
-        <h2>《济南风景》</h2>
-        <div class="artist">宋佳颖</div>
-        <audio controls autoplay>
-            <source src="https://huaiguang001.github.io/jinanfengjing/jinanfengjing.mp3" type="audio/mpeg">
-            您的浏览器不支持音频播放
+
+        <h1>济南风景</h1>
+        <p>画作欣赏与背景音乐</p>
+
+        <!-- 音频区域 -->
+        <audio controls>
+            <source src="jinanfengjing.mp3" type="audio/mpeg">
+            您的浏览器不支持音频播放。
         </audio>
-        <div class="instruction">🎧 戴上耳机体验更佳</div>
     </div>
+
 </body>
 </html>
